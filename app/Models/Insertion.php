@@ -23,4 +23,8 @@ class Insertion extends Model {
         "salaire_net_mensuel_regional_3eme_quartile",
         "emplois_cadre_ou_professions_intermediaires",
     ];
+
+    public function universite() {
+        return $this->belongsTo(Universite::class, 'id_paysage', 'etablissement_id_paysage');
+    }
 }

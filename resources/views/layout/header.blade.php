@@ -23,6 +23,9 @@
                     <a class="nav-link" href="{{ route('universites') }}">Universités</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('comparaison') }}">Comparaison</a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('refreshData') }}">Actualiser les données</a>
@@ -30,9 +33,6 @@
 
             </ul>
 
-            <div class="d-none d-lg-block">
-                <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
-            </div>
         </div>
     </div>
 </nav>

@@ -20,6 +20,8 @@
         <link href="{{ asset('template/css/templatemo-topic-listing.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+
+        @yield('css')
     </head>
 
     <body id="top">
@@ -38,6 +40,7 @@
         <script src="{{ asset('template/js/jquery.sticky.js') }}"></script>
         <script src="{{ asset('template/js/click-scroll.js') }}"></script>
         <script src="{{ asset('template/js/custom.js') }}"></script>
+        @yield('js')
 
     </body>
 </html>

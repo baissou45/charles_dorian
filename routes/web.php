@@ -13,3 +13,4 @@ Route::view('/donnedddGeted', 'donneesOk')->name('donneesOk');
 Route::get('/universites', [UniversiteController::class, 'index'])->name('universites');
 Route::get('/universites/{universite}', [UniversiteController::class, 'show'])->name('universites.show');
 Route::get('/donnedddGeted', [UniversiteController::class, 'index'])->name('universites');
+Route::get('/comparaison', [UniversiteController::class, 'comparaison'])->name('comparaison');
