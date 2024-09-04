@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" style="background-image: linear-gradient(15deg, #80d0c7 0%, #13547a 100%)">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
-            {{-- <i class="bi-back"></i> --}}
-            {{-- <span>Topic</span> --}}
+        <a class="navbar-brand" href="{{ route('home') }}">
+            <i class="bi-back"></i>
+            <span>EtuSup</span>
         </a>
 
         <div class="d-lg-none ms-auto me-4">
@@ -30,9 +30,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('refreshData') }}">Actualiser les données</a>
                 </li>
-
             </ul>
-
         </div>
     </div>
 </nav>

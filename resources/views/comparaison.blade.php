@@ -7,18 +7,18 @@
 
 
 @section('contenu')
-<section class="hero-section d-flex justify-content-center align-items-center" id="section_1" style="height: 100vh">
+<section class="hero-section d-flex justify-content-center align-items-center">
     <div class="container">
 
-        <div class="card">
-            <div class="card-header">
+        <div class="card shadow" style="border: none">
+            <div class="card-header" style="background-image: linear-gradient(15deg, #80d0c7 0%, #13547a 100%);">
                 <h3 class="card-title">Filtre</h3>
             </div>
 
             <div class="card-body">
                 <form method="get" class="row">
-                    <div class="form-group col-3">
-                        <label for="type" class="pb-2">Type de filtre</label>
+                    <div class="form-group col-6 mt-2">
+                        <label for="type" class="pb-1">Type de filtre</label>
                         <select id="type" class="form-control" name="type">
                             <option {{ request()->type == "etudiant" ? "selected" : "" }} value="etudiant">Etudiant</option>
                             <option {{ request()->type == "insertion" ? "selected" : "" }} value="insertion">Taux d'insertion</option>
@@ -27,8 +27,8 @@
                         </select>
                     </div>
 
-                    <div class="form-group col-3">
-                        <label for="annee" class="pb-2">Année</label>
+                    <div class="form-group col-6 mt-2">
+                        <label for="annee" class="pb-1">Année</label>
                         <select class="form-control" name="annee">
                             <option {{ request()->annee == "2010" ? "selected" : "" }} value="2010">2010</option>
                             <option {{ request()->annee == "2011" ? "selected" : "" }} value="2011">2011</option>
@@ -48,16 +48,16 @@
                         </select>
                     </div>
 
-                    <div class="form-group col-3">
-                        <label for="annee" class="pb-2">Année</label>
+                    <div class="form-group col-6 mt-2">
+                        <label for="annee" class="pb-1">Trie</label>
                         <select class="form-control" name="trie">
                             <option {{ request()->trie == "asc" ? "selected" : "" }} value="asc">Croissant</option>
                             <option {{ request()->trie == "desc" ? "selected" : "" }} value="desc">Décroissant</option>
                         </select>
                     </div>
 
-                    <div class="form-group col-3">
-                        <label for="nbr_result" class="pb-2">Nombre de résultat</label>
+                    <div class="form-group col-6 mt-2">
+                        <label for="nbr_result" class="pb-1">Nombre de résultat</label>
                         <select class="form-control" name="nbr_result">
                             @for ($i = 0; $i < 50; $i++)
                                 <option {{ request()->nbr_result == $i + 1 ? "selected" : "" }} value="{{ $i + 1 }}"> {{ $i + 1 }} </option>
@@ -73,15 +73,15 @@
         </div>
 
 
-        <div class="card mt-3">
-            <div class="card-header">
+        <div class="card mt-3 shadow" style="border: none">
+            <div class="card-header" style="background-image: linear-gradient(15deg, #80d0c7 0%, #13547a 100%);">
                 <h3 class="card-title">Comparaison ciblée</h3>
                 <i>Sélectionner la liste des établissements que vous souhaitez comparer, puis mancer la comparaison.</i>
             </div>
             <div class="card-body">
                 <form method="get" class="row">
                     <div class="form-group">
-                        <label for="type" class="pb-2">Comparaison</label>
+                        <label for="type" class="pb-1">Comparaison</label>
                         <select id="type" class="js-example-basic-multiple form-control" name="comparaison[]" multiple="multiple">
                             @foreach ($universite_all as $univ)
                                 <option value="{{ $univ->id }}"> {{ $univ->uo_lib }} </option>
@@ -104,56 +104,56 @@
             <div class="card-body">
 
                 @if($universites)
+                    <div class="table-responsive">
+                        <table class="table table-light">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Universite</th>
+                                    <th>Etudiant ({{ request()->annee ?? "2022" }}) </th>
 
-                    <table class="table table-light">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>Universite</th>
-                                <th>Etudiant ({{ request()->annee ?? "2022" }}) </th>
+                                    @if (request()->type == "insertion")
+                                        <th> Domaine </th>
+                                        <th> Discipline </th>
+                                        <th> Taux (%) </th>
+                                    @endif
 
+                                    <th>Personnel contractuels</th>
+                                    <th>Personnel titulaires</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 @if (request()->type == "insertion")
-                                    <th> Domaine </th>
-                                    <th> Discipline </th>
-                                    <th> Taux (%) </th>
+                                    @foreach ($universites as $universite)
+                                        <tr>
+                                            <td> {{ $universite->universite->uo_lib }} </td>
+                                            <td> {{ $universite->universite->inscrits_ . (request()->annee ?? "0") }} </td>
+                                            <td> {{ $universite->domaine }} </td>
+                                            <td> {{ $universite->discipline }} </td>
+                                            <td> {{ $universite->taux_dinsertion }} </td>
+                                            <td> {{ $universite->universite->personnels->where('type_personnel', 'contractuels')->count() }} </td>
+                                            <td> {{ $universite->universite->personnels->where('type_personnel', '!=', 'contractuels')->count() }} </td>
+                                            <td class="text-center">
+                                                <a href="{{ route('universites.show', $universite->id) }}"><i class="fa fa-eye text-primary"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    @foreach ($universites as $universite)
+                                        <tr>
+                                            <td> {{ $universite->uo_lib }} </td>
+                                            <td> {{ $universite->inscrits_ . (request()->annee ?? "0") }} </td>
+                                            <td> {{ $universite->personnels->where('type_personnel', 'contractuels')->count() }} </td>
+                                            <td> {{ $universite->personnels->where('type_personnel', '!=', 'contractuels')->count() }} </td>
+                                            <td class="text-center">
+                                                <a href="{{ route('universites.show', $universite->id) }}"><i class="fa fa-eye text-primary"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 @endif
-
-                                <th>Personnel contractuels</th>
-                                <th>Personnel titulaires</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (request()->type == "insertion")
-                                @foreach ($universites as $universite)
-                                    <tr>
-                                        <td> {{ $universite->universite->uo_lib }} </td>
-                                        <td> {{ $universite->universite->inscrits_ . (request()->annee ?? "2022") }} </td>
-                                        <td> {{ $universite->domaine }} </td>
-                                        <td> {{ $universite->discipline }} </td>
-                                        <td> {{ $universite->taux_dinsertion }} </td>
-                                        <td> {{ $universite->universite->personnels->where('type_personnel', 'contractuels')->count() }} </td>
-                                        <td> {{ $universite->universite->personnels->where('type_personnel', '!=', 'contractuels')->count() }} </td>
-                                        <td class="text-center">
-                                            <a href="{{ route('universites.show', $universite->id) }}"><i class="fa fa-eye text-primary"></i></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @else
-                                @foreach ($universites as $universite)
-                                    <tr>
-                                        <td> {{ $universite->uo_lib }} </td>
-                                        <td> {{ $universite->inscrits_ . (request()->annee ?? "2022") }} </td>
-                                        <td> {{ $universite->personnels->where('type_personnel', 'contractuels')->count() }} </td>
-                                        <td> {{ $universite->personnels->where('type_personnel', '!=', 'contractuels')->count() }} </td>
-                                        <td class="text-center">
-                                            <a href="{{ route('universites.show', $universite->id) }}"><i class="fa fa-eye text-primary"></i></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @endif
-                        </tbody>
-                    </table>
-
+                            </tbody>
+                        </table>
+                    </div>
                 @else
                     <p class="text-center">Aucun filtre n'a été appliqué</p>
                 @endif

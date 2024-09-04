@@ -58,15 +58,6 @@
                     </div>
                 </div>
             </div>
-
-            {{-- <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h6 class="card-title">Etudiants</h6>
-                        <p class="card-text"> {{ $universite->inscrits ?? 'NC' }} </p>
-                    </div>
-                </div>
-            </div> --}}
         </div>
 
         <div class="card mt-5">
@@ -77,39 +68,6 @@
                 <canvas id="etudiantsChart"></canvas>
             </div>
         </div>
-
-        {{-- <div class="card mt-5">
-            <div class="card-header">
-                <h5>Insertion proffetionelle</h5>
-            </div>
-            <div class="card-body">
-                <table class="table table-light">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>Annee</th>
-                            <th>Diplome</th>
-                            <th>Discipline</th>
-                            <th>Taux d'insertion</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($insertions as $insertion)
-                        <tr>
-                            <td> {{ $insertion->annee }}  </td>
-                            <td> {{ $insertion->diplome }}  </td>
-                            <td> {{ $insertion->discipline }}  </td>
-                            <td> {{ $insertion->taux_dinsertion == "ns" ? $insertion->taux_dinsertion : $insertion->taux_dinsertion . ' %' }}  </td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="4"></td>
-                        </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-        </div> --}}
-
 
         <div class="card mt-5">
             <div class="card-header">
