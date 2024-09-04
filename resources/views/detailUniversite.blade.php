@@ -60,71 +60,76 @@
             </div>
         </div>
 
-        <div class="card mt-5">
-            <div class="card-header">
-                <h5>Evolution des inscription des etudiants</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mt-5" style="height: 500px">
+                    <div class="card-header">
+                        <h5>Evolution des inscription des etudiants</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="etudiantsChart"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <canvas id="etudiantsChart"></canvas>
+
+            <div class="col-md-6">
+                <div class="card mt-5" style="height: 500px">
+                    <div class="card-header">
+                        <h5>Insertion proffetionelle</h5>
+        
+        
+                        <form method="get">
+                            <div class="d-flex justify-content-around my-3">
+                                <div class="form-group col-6">
+                                    <select class="form-control" name="annee">
+                                        <option value="">Année</option>
+                                        <option {{ request()->annee == "2010" ? "selected" : "" }} value="2010">2010</option>
+                                        <option {{ request()->annee == "2011" ? "selected" : "" }} value="2011">2011</option>
+                                        <option {{ request()->annee == "2012" ? "selected" : "" }} value="2012">2012</option>
+                                        <option {{ request()->annee == "2013" ? "selected" : "" }} value="2013">2013</option>
+                                        <option {{ request()->annee == "2014" ? "selected" : "" }} value="2014">2014</option>
+                                        <option {{ request()->annee == "2014" ? "selected" : "" }} value="2014">2014</option>
+                                        <option {{ request()->annee == "2015" ? "selected" : "" }} value="2015">2015</option>
+                                        <option {{ request()->annee == "2016" ? "selected" : "" }} value="2016">2016</option>
+                                        <option {{ request()->annee == "2017" ? "selected" : "" }} value="2017">2017</option>
+                                        <option {{ request()->annee == "2018" ? "selected" : "" }} value="2018">2018</option>
+                                        <option {{ request()->annee == "2019" ? "selected" : "" }} value="2019">2019</option>
+                                        <option {{ request()->annee == "2020" ? "selected" : "" }} value="2020">2020</option>
+                                        <option {{ request()->annee == "2021" ? "selected" : "" }} value="2021">2021</option>
+                                        <option {{ request()->annee == "2022" ? "selected" : "" }} value="2022">2022</option>
+                                        {{-- <option {{ request()->annee == "2023" ? "selected" : "" }} value="2023">2023</option>
+                                        <option {{ request()->annee == "2024" ? "selected" : "" }} value="2024">2024</option> --}}
+                                    </select>
+                                </div>
+        
+                                <div class="form-group col-6">
+                                    <select id="my-select" class="form-control" name="diplome">
+                                        <option value="">Diplôme</option>
+                                        <option {{ request()->diplome == "licence" ? "selected" : "" }} value="licence">Licence</option>
+                                        <option {{ request()->diplome == "master" ? "selected" : "" }} value="master">Master</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <button class="btn btn-primary">Filtrer</button>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="card-body">
+                        <canvas id="insertion"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="card mt-5">
-            <div class="card-header">
-                <h5>Insertion proffetionelle</h5>
-
-
-                <form method="get">
-                    <div class="d-flex justify-content-around my-3">
-                        <div class="form-group col-6">
-                            <select class="form-control" name="annee">
-                                <option value="">Année</option>
-                                <option {{ request()->annee == "2010" ? "selected" : "" }} value="2010">2010</option>
-                                <option {{ request()->annee == "2011" ? "selected" : "" }} value="2011">2011</option>
-                                <option {{ request()->annee == "2012" ? "selected" : "" }} value="2012">2012</option>
-                                <option {{ request()->annee == "2013" ? "selected" : "" }} value="2013">2013</option>
-                                <option {{ request()->annee == "2014" ? "selected" : "" }} value="2014">2014</option>
-                                <option {{ request()->annee == "2014" ? "selected" : "" }} value="2014">2014</option>
-                                <option {{ request()->annee == "2015" ? "selected" : "" }} value="2015">2015</option>
-                                <option {{ request()->annee == "2016" ? "selected" : "" }} value="2016">2016</option>
-                                <option {{ request()->annee == "2017" ? "selected" : "" }} value="2017">2017</option>
-                                <option {{ request()->annee == "2018" ? "selected" : "" }} value="2018">2018</option>
-                                <option {{ request()->annee == "2019" ? "selected" : "" }} value="2019">2019</option>
-                                <option {{ request()->annee == "2020" ? "selected" : "" }} value="2020">2020</option>
-                                <option {{ request()->annee == "2021" ? "selected" : "" }} value="2021">2021</option>
-                                <option {{ request()->annee == "2022" ? "selected" : "" }} value="2022">2022</option>
-                                <option {{ request()->annee == "2023" ? "selected" : "" }} value="2023">2023</option>
-                                <option {{ request()->annee == "2024" ? "selected" : "" }} value="2024">2024</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group col-6">
-                            <select id="my-select" class="form-control" name="diplome">
-                                <option value="">Diplôme</option>
-                                <option {{ request()->diplome == "licence" ? "selected" : "" }} value="licence">Licence</option>
-                                <option {{ request()->diplome == "master" ? "selected" : "" }} value="master">Master</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="d-flex justify-content-end">
-                        <button class="btn btn-primary">Filtrer</button>
-                    </div>
-                </form>
-
-            </div>
-            <div class="card-body">
-                <canvas id="insertion"></canvas>
-            </div>
-        </div>
-
 
         <div class="card mt-5">
             <div class="card-header">
                 <h5>Personnel administratif</h5>
             </div>
             <div class="card-body">
-                <canvas id="personnelChart"></canvas>
+                <canvas id="personnelChart" style="width: 100%; height: 450px;"></canvas>
             </div>
         </div>
 

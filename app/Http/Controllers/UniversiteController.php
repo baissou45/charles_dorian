@@ -12,11 +12,11 @@ class UniversiteController extends Controller {
         $universites = Universite::query();
 
         if ($request->entreprise) {
-            $universites = $universites->where('uo_lib', 'like', '%' . $request->entreprise . '%')->orWhere('etablissement_id_paysage', 'like', '%' . $request->entreprise . '%');
+            $universites = $universites->where('uo_lib', 'like', '%' . $request->entreprise . '%')->orWhere('com_nom', 'like', '%' . $request->entreprise . '%');
         }
 
         if ($request->trie) {
-            $universites = $universites->where('uo_lib', 'like', '%' . $request->entreprise . '%')->orWhere('etablissement_id_paysage', 'like', '%' . $request->entreprise . '%');
+            $universites = $universites->where('uo_lib', 'like', '%' . $request->entreprise . '%')->orWhere('com_nom', 'like', '%' . $request->entreprise . '%');
 
             switch ($request->trie) {
                 case 'nom_croiss':
@@ -27,12 +27,12 @@ class UniversiteController extends Controller {
                     $universites = $universites->orderByDesc('uo_lib', 'desc');
                     break;
 
-                case 'id_croiss':
-                    $universites = $universites->orderBy('etablissement_id_paysage', 'asc');
+                case 'com_nom_croiss':
+                    $universites = $universites->orderBy('com_nom', 'asc');
                     break;
 
-                case 'id_decroiss':
-                    $universites = $universites->orderByDesc('etablissement_id_paysage', 'desc');
+                case 'com_nom_decroiss':
+                    $universites = $universites->orderByDesc('com_nom', 'desc');
                     break;
 
                 default:

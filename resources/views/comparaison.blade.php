@@ -11,7 +11,7 @@
     <div class="container">
 
         <div class="card shadow" style="border: none">
-            <div class="card-header" style="background-image: linear-gradient(15deg, #80d0c7 0%, #13547a 100%);">
+            <div class="card-header">
                 <h3 class="card-title">Filtre</h3>
             </div>
 
@@ -43,8 +43,8 @@
                             <option {{ request()->annee == "2020" ? "selected" : "" }} value="2020">2020</option>
                             <option {{ request()->annee == "2021" ? "selected" : "" }} value="2021">2021</option>
                             <option {{ request()->annee == "2022" ? "selected" : "" }} value="2022">2022</option>
-                            <option {{ request()->annee == "2023" ? "selected" : "" }} value="2023">2023</option>
-                            <option {{ request()->annee == "2024" ? "selected" : "" }} value="2024">2024</option>
+                            {{-- <option {{ request()->annee == "2023" ? "selected" : "" }} value="2023">2023</option>
+                            <option {{ request()->annee == "2024" ? "selected" : "" }} value="2024">2024</option> --}}
                         </select>
                     </div>
 
@@ -73,8 +73,8 @@
         </div>
 
 
-        <div class="card mt-3 shadow" style="border: none">
-            <div class="card-header" style="background-image: linear-gradient(15deg, #80d0c7 0%, #13547a 100%);">
+        <div class="card mt-5 shadow" style="border: none">
+            <div class="card-header">
                 <h3 class="card-title">Comparaison ciblée</h3>
                 <i>Sélectionner la liste des établissements que vous souhaitez comparer, puis mancer la comparaison.</i>
             </div>

@@ -25,9 +25,10 @@
 <section class="hero-section d-flex justify-content-center align-items-center" id="section_1" style="height: 100vh;">
 
     <div style="position: absolute; height: 100%; width: 100%">
-        <img src="{{ asset('bg1.jpeg') }}" style="height: 100%; width: 100%">
+        <img src="{{ asset('bg1.jpeg') }}" style="height: 100%; width: 100%" class="d-none d-md-block">
+        <img src="{{ asset('b1_mobile.jpg') }}" style="height: 100%; width: 100%" class="d-md-none">
         <div class="overlay"></div>
-    </div>
+      </div>
 
     <div class="container">
         <div class="row">
@@ -43,7 +44,7 @@
 
                         </span>
 
-                        <input name="entreprise" type="search" class="form-control" id="keyword" placeholder="Nom ou id paysage de l'établissement" aria-label="Search">
+                        <input name="entreprise" type="search" class="form-control" id="keyword" placeholder="Nom ou commune de l'établissement" aria-label="Search">
                         <button type="submit" class="form-control">Rechercher</button>
                     </div>
                 </form>

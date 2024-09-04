@@ -6,12 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="author" content="Charles CAPO-CHICHI et Dorian GOMA">
 
-        <title>Topic Listing Bootstrap 5 Template</title>
-
-        {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> --}}
+        <title>EtuSup</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
         <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -31,12 +28,12 @@
 
             @yield('contenu')
         </main>
+        @include('layout.footer')
 
         <script src="{{ asset('template/js/jquery.min.js') }}"></script>
         <script src="{{ asset('template/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('template/js/jquery.sticky.js') }}"></script>
-        {{-- <script src="{{ asset('template/js/click-scroll.js') }}"></script>
-        <script src="{{ asset('template/js/custom.js') }}"></script> --}}
+
         @yield('js')
 
     </body>

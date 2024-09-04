@@ -57,7 +57,7 @@
                         <span class="input-group-text bi-search" id="basic-addon1"></span>
 
                         <input name="entreprise" type="search" class="form-control" id="keyword"
-                            placeholder="Nom de l'établissement" aria-label="Search"
+                            placeholder="Nom ou commune de l'établissement" aria-label="Search"
                             value="{{ request()->entreprise ?? '' }}">
                         <button type="submit" class="form-control mx-2">Rechercher</button>
                         {{-- <button type="submit" class="form-control mx-2">Rechercher</button> --}}
@@ -67,8 +67,8 @@
                                 <option>Trie ...</option>
                                 <option value="nom_croiss">Nom croissant</option>
                                 <option value="nom_decroiss">Nom décroissant</option>
-                                <option value="id_croiss">Id paysage croissant</option>
-                                <option value="id_decroiss">Id paysage décroissant</option>
+                                <option value="com_nom_croiss">Commune croissant</option>
+                                <option value="com_nom_decroiss">Commune décroissant</option>
                             </select>
                         </div>
                     </div>
